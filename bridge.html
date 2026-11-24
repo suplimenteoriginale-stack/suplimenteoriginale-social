@@ -1,5 +1,5 @@
-<!doctype html><meta charset="utf-8"><script>
-parent.postMessage({so:'ready'},'*');
+<!doctype html><meta charset="utf-8"><title>SO bridge</title><script>
+const T=window.opener||parent;T.postMessage({so:'ready'},'*');
 addEventListener('message',async e=>{const d=e.data||{};if(!d.soget)return;
  try{const out=[];for(const p of d.soget){const r=await fetch(p);out.push({p,b:await r.blob()})}e.source.postMessage({sores:d.id,files:out},'*')}
  catch(err){e.source.postMessage({sores:d.id,err:String(err)},'*')}});
